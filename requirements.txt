@@ -1,0 +1,5 @@
+# Versions used for the paper.
+pyyaml==6.0.3
+pandas==2.3.3
+numpy==2.2.6
+ollama==0.6.1               # 4_vqa_inference

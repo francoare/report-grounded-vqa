@@ -1,0 +1,113 @@
+# The 16 benchmark questions (Table 1 of the paper).
+#
+# question: exact Spanish wording sent to the models and to the judge.
+# question_en: English translation, for reference only (never sent to any model).
+# label_en: short label used in Table 1 and in the figures.
+# finding: finding description (Spanish) produced by question discovery; used by the
+#          reference-generation pipeline, not by the evaluated models.
+# reference_source: "report" (eye-specific report text) or "metadata" (image-upload metadata).
+#
+# IDs follow the internal schema (category:number) and key the judge guides and the
+# enriched questions.
+
+categories:
+  CAT_CALIDAD_IMAGEN: Image quality
+  CAT_RETINOPATIA_DIABETICA: DR findings
+
+questions:
+  "CAT_CALIDAD_IMAGEN:1":
+    label_en: Sufficient quality to be reported?
+    question: "¿Consideras que la imagen tiene calidad suficiente como para ser informada?"
+    question_en: "Do you consider that the image has sufficient quality to be reported?"
+    finding: "calidad general e informabilidad (ej. informable, no informable, calidad aceptable, calidad buena)"
+    reference_source: report
+  "CAT_CALIDAD_IMAGEN:2":
+    label_en: Which eye?
+    question: "¿A qué ojo corresponde la imagen?"
+    question_en: "Which eye does the image correspond to?"
+    finding: "lateralidad de la imagen (ej. ojo derecho, ojo izquierdo)"
+    reference_source: metadata
+  "CAT_CALIDAD_IMAGEN:3":
+    label_en: Centered; disc and macula visible?
+    question: "¿La imagen está correctamente centrada en mácula? ¿Se observan correctamente tanto el disco óptico como la mácula?"
+    question_en: "Is the image correctly centered on the macula? Are both the optic disc and the macula clearly visible?"
+    finding: "estado de centrado (ej. centrado correcto en mácula y nervio óptico, descentrado leve, descentrado que impide visualizar el nervio óptico)"
+    reference_source: report
+  "CAT_CALIDAD_IMAGEN:4":
+    label_en: Well illuminated?
+    question: "¿La imagen está bien iluminada?"
+    question_en: "Is the image well illuminated?"
+    finding: "nivel de iluminación (ej. iluminación adecuada, subexpuesta, sobreexpuesta, alteración de iluminación en periferia)"
+    reference_source: report
+  "CAT_CALIDAD_IMAGEN:5":
+    label_en: Sharp, with good contrast?
+    question: "¿La imagen es suficientemente nítida? ¿Tiene buen contraste?"
+    question_en: "Is the image sufficiently sharp? Does it have good contrast?"
+    finding: "nivel de nitidez y contraste (ej. foco correcto, imagen borrosa, desenfocada, contraste deficiente)"
+    reference_source: report
+  "CAT_CALIDAD_IMAGEN:6":
+    label_en: Artifacts?
+    question: "¿Existen artefactos en la imagen?"
+    question_en: "Are there artifacts in the image?"
+    finding: "presencia de artefactos de captura (ej. sin artefactos, reflejos del lente, sombras por pestañas, artefacto blanquecino superpuesto)"
+    reference_source: report
+  "CAT_CALIDAD_IMAGEN:7":
+    label_en: Main retinal structures visible?
+    question: "¿Se observan correctamente en la imagen las principales estructuras anatómicas de la retina (arcadas vasculares, mácula, disco óptico)?"
+    question_en: "Are the main anatomical structures of the retina (vascular arcades, macula, optic disc) clearly visible in the image?"
+    finding: "limitación de visibilidad topográfica (ej. visibilidad total, visibilidad parcial que permite informe de áreas rescatables, imposibilidad de evaluar mácula o arcadas)"
+    reference_source: report
+  "CAT_CALIDAD_IMAGEN:8":
+    label_en: Anatomical factor limiting quality?
+    question: "¿Se observa algún factor anatómico que limita la calidad de la imagen?"
+    question_en: "Is there any anatomical factor limiting the quality of the image?"
+    finding: "factores anatómicos limitantes (ej. alta miopía, pupilas mióticas, opacidad de medios)"
+    reference_source: report
+  "CAT_RETINOPATIA_DIABETICA:1":
+    label_en: Microaneurysms/microhemorrhages
+    question: "¿Se observan microaneurismas o microhemorragias? ¿Dónde se localizan?"
+    question_en: "Are microaneurysms or microhemorrhages observed? Where are they located?"
+    finding: "presencia y topografía de microaneurismas y microhemorragias - MA/MH (ej. ausentes, escasos/aislados, abundantes dispersos en múltiples cuadrantes)"
+    reference_source: report
+  "CAT_RETINOPATIA_DIABETICA:2":
+    label_en: Intraretinal hemorrhages
+    question: "¿Hay hemorragias intrarretinianas, incluidas microhemorragias? ¿Dónde se localizan?"
+    question_en: "Are there intraretinal hemorrhages, including microhemorrhages? Where are they located?"
+    finding: "presencia y topografía de hemorragias intrarretinianas, incluidas microhemorragias (ej. ausentes, microhemorragias, en llama superficiales, redondeadas/profundas, manchas de Roth)"
+    reference_source: report
+  "CAT_RETINOPATIA_DIABETICA:3":
+    label_en: Hard exudates
+    question: "¿Existen exudados duros blanquecinos? ¿Dónde se localizan?"
+    question_en: "Are there whitish hard exudates? Where are they located?"
+    finding: "presencia y topografía de exudados duros blanquecinos (ej. ausentes, aislados, perimaculares, en patrón de circina)"
+    reference_source: report
+  "CAT_RETINOPATIA_DIABETICA:4":
+    label_en: Cotton-wool spots
+    question: "¿Hay presencia de exudados blandos o algodonosos? ¿Dónde se localizan?"
+    question_en: "Are soft exudates (cotton-wool spots) present? Where are they located?"
+    finding: "presencia y topografía de exudados blandos algodonosos (ej. ausentes, aislados, múltiples focos en áreas perivasculares)"
+    reference_source: report
+  "CAT_RETINOPATIA_DIABETICA:5":
+    label_en: Venous beading or tortuosity
+    question: "¿Se observan alteraciones venosas como arrosariamiento o tortuosidad?"
+    question_en: "Are venous abnormalities such as beading or tortuosity observed?"
+    finding: "presencia de alteraciones venosas (ej. ausentes, arrosariamiento venoso leve, dilataciones/tortuosidad severa)"
+    reference_source: report
+  "CAT_RETINOPATIA_DIABETICA:6":
+    label_en: IRMA
+    question: "¿Existen anomalías microvasculares intrarretinianas (IRMA)?"
+    question_en: "Are there intraretinal microvascular abnormalities (IRMA)?"
+    finding: "presencia de anomalías microvasculares intrarretinianas - IRMA (ej. ausentes, IRMA focal, IRMA en múltiples cuadrantes)"
+    reference_source: report
+  "CAT_RETINOPATIA_DIABETICA:7":
+    label_en: Neovascularization
+    question: "¿Hay signos de neovascularización o tejido fibrovascular?"
+    question_en: "Are there signs of neovascularization or fibrovascular tissue?"
+    finding: "presencia de neovascularización y tejido fibrovascular (ej. ausentes, neovasos papilares NVD, neovasos extrapapilares NVE, proliferación fibrovascular)"
+    reference_source: report
+  "CAT_RETINOPATIA_DIABETICA:8":
+    label_en: Signs of previous treatment
+    question: "¿Se evidencian signos de tratamientos oftalmológicos previos?"
+    question_en: "Is there evidence of previous ophthalmological treatment?"
+    finding: "presencia de signos de tratamiento previo (ej. sin rastros de láser, cicatrices de fotocoagulación focal, marcas de panfotocoagulación)"
+    reference_source: report

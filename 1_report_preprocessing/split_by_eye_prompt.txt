@@ -1,0 +1,19 @@
+
+A continuación recibirás un reporte médico que puede contener información mezclada de ambos ojos. Tu única tarea es separar la información correspondiente a cada ojo.
+
+Reglas estrictas:
+1. NO actúes como médico, NO resumas y NO inventes información. Limítate a extraer las frases del informe original que correspondan al ojo respectivo.
+2. Desecha cualquier información que pertenezca exclusivamente al otro ojo.
+3. Si una frase hace referencia explícita a ambos ojos (por ejemplo: "Ambos ojos presentan exudados"), debes adaptarla para que tenga sentido individual al leerse (ej. escribe simplemente "Presentan exudados" para cada ojo). Esta es la única modificación permitida al texto original.
+4. Si el informe contiene recomendaciones o impresiones diagnósticas generales que aplican al paciente, cópialas en ambos ojos.
+5. NO agregues etiquetas, viñetas ni prefijos artificiales (como "Hallazgos:", "Ojo Derecho:", "Impresión Diagnóstica:" o "Recomendaciones:"). Devuelve únicamente un párrafo continuo y natural, tal como lo redactaría el oftalmólogo de corrido.
+
+
+Reporte original a procesar:
+"{texto_original}"
+
+Debes devolver obligatoriamente un JSON válido con esta estructura exacta:
+{
+    "ojo_derecho": "texto filtrado...",
+    "ojo_izquierdo": "texto filtrado..."
+}

@@ -1,0 +1,8 @@
+{
+  "CAT_CALIDAD_IMAGEN": {
+    "1": "Para informabilidad: mala calidad, calidad insuficiente o imposibilidad de informar explícitas implican no informable; calidad suficiente o informabilidad explícitas permiten una respuesta afirmativa. Calidad media o una falla de iluminación por sí solas no permiten decidir: answer null y evidence []. Citá el respaldo explícito. Si hay afirmaciones contradictorias, no las resuelvas por esta regla: requiere revisión."
+  },
+  "CAT_RETINOPATIA_DIABETICA": {
+    "2": "Esta pregunta incluye microhemorragias. Su mención explícita permite una respuesta afirmativa sobre hemorragias, con la localización documentada. Microaneurismas solos no implican hemorragias. Una expresión conjunta microhemorragias/microaneurismas se conserva tal como está, sin desambiguar ni inventar tamaño, cantidad o tipo."
+  }
+}

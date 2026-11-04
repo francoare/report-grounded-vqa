@@ -1,0 +1,9 @@
+{
+  "type": "object",
+  "properties": {
+    "score": {"type": "number", "enum": [0, 0.5, 1]},
+    "explanation": {"type": "string"}
+  },
+  "required": ["score", "explanation"],
+  "additionalProperties": false
+}

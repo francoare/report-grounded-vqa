@@ -1,0 +1,310 @@
+# Enriched versions of the 16 questions (question-enrichment experiment).
+# pregunta_original: the original question (sent to the judge).
+# prompt_enriquecido: the enriched question, sent to the model as the user turn instead of
+#   the original question, with the direct-answering / direct-command system prompt.
+# The examples inside each enriched question are hypothetical and identical for every image.
+
+preguntas:
+
+  "CAT_CALIDAD_IMAGEN:1":
+    pregunta_original: "¿Consideras que la imagen tiene calidad suficiente como para ser informada?"
+    prompt_enriquecido: |
+      Responde la siguiente pregunta sobre la imagen: ¿Consideras que la imagen tiene calidad suficiente como para ser informada?
+
+      Qué observar:
+      - Comprueba qué porción del fondo de ojo es visible y si se pueden identificar las estructuras necesarias para una evaluación básica de la retina.
+      - Examina en conjunto enfoque, contraste, iluminación y artefactos; distingue defectos leves de defectos que impiden interpretar zonas relevantes.
+      - Valora si las limitaciones son locales (hay áreas que se pueden analizar) o afectan prácticamente todo el campo.
+      - No exijas una imagen perfecta: decide si permite extraer información fiable, no si está libre de cualquier defecto.
+
+      Ejemplos hipotéticos, solo de texto (no representan la imagen actual):
+      - Ejemplo A. Observación hipotética: se distinguen los vasos y las estructuras principales, aunque existe una imperfección leve. Respuesta: "Sí, la imagen tiene calidad suficiente para ser informada."
+      - Ejemplo B. Observación hipotética: una degradación extensa impide reconocer estructuras esenciales. Respuesta: "No, la imagen no tiene calidad suficiente para ser informada."
+
+      Instrucciones generales: Trabaja exclusivamente con la retinografía color adjunta. Los ejemplos son hipotéticos: no describen la imagen actual, no deben tomarse como evidencia ni copiarse. No inventes observaciones. Responde en español, sin información clínica externa.
+
+      Formato de salida: Empieza por "Sí" o "No", seguido de la razón visual principal, en una o dos oraciones. Si solo parte del campo es interpretable, acláralo.
+
+  "CAT_CALIDAD_IMAGEN:2":
+    pregunta_original: "¿A qué ojo corresponde la imagen?"
+    prompt_enriquecido: |
+      Responde la siguiente pregunta sobre la imagen: ¿A qué ojo corresponde la imagen?
+
+      Qué observar:
+      - Identifica el disco óptico y la mácula: el disco está del lado nasal de la retina y la mácula del lado temporal.
+      - Usa su disposición horizontal para inferir la lateralidad. La retinografía se presenta con la orientación convencional, sin inversión en espejo.
+      - En esa orientación, el disco óptico situado a la derecha de la fotografía corresponde al ojo derecho; situado a la izquierda, al ojo izquierdo.
+
+      Ejemplos hipotéticos, solo de texto (no representan la imagen actual):
+      - Ejemplo A. Observación hipotética: el disco óptico se ve a la derecha del campo y la mácula hacia el lado opuesto. Respuesta: "Ojo derecho."
+      - Ejemplo B. Observación hipotética: el disco óptico se ve a la izquierda del campo y la mácula hacia el lado opuesto. Respuesta: "Ojo izquierdo."
+
+      Instrucciones generales: Trabaja exclusivamente con la retinografía color adjunta. Los ejemplos son hipotéticos: no describen la imagen actual, no deben tomarse como evidencia ni copiarse. No inventes observaciones. Responde en español, sin información clínica externa.
+
+      Formato de salida: Responde "Ojo derecho" u "Ojo izquierdo", seguido de una justificación breve basada en la posición del disco óptico, en una o dos oraciones.
+
+  "CAT_CALIDAD_IMAGEN:3":
+    pregunta_original: "¿La imagen está correctamente centrada en mácula? ¿Se observan correctamente tanto el disco óptico como la mácula?"
+    prompt_enriquecido: |
+      Responde la siguiente pregunta sobre la imagen: ¿La imagen está correctamente centrada en mácula? ¿Se observan correctamente tanto el disco óptico como la mácula?
+
+      Qué observar:
+      - Localiza la mácula, la región central de la retina temporal al disco, y el disco óptico, la zona de convergencia de los vasos.
+      - Observa la posición de la mácula respecto del campo capturado y si queda suficientemente incluida para evaluarla.
+      - Comprueba por separado si el disco óptico aparece completo o suficientemente visible y si la mácula puede evaluarse.
+      - Distingue un desplazamiento leve que conserva ambas referencias de un descentrado que recorta u oculta una estructura esencial.
+
+      Ejemplos hipotéticos, solo de texto (no representan la imagen actual):
+      - Ejemplo A. Observación hipotética: la región macular está bien incluida en el campo y también se distingue el disco óptico. Respuesta: "Sí, la imagen está centrada en la mácula y se observan el disco óptico y la mácula."
+      - Ejemplo B. Observación hipotética: el campo está desplazado y una de las dos estructuras queda fuera de la zona visible. Respuesta: "No, la imagen está descentrada y una de las dos estructuras no se observa correctamente."
+
+      Instrucciones generales: Trabaja exclusivamente con la retinografía color adjunta. Los ejemplos son hipotéticos: no describen la imagen actual, no deben tomarse como evidencia ni copiarse. No inventes observaciones. Responde en español, sin información clínica externa.
+
+      Formato de salida: Indica primero si el centrado en la mácula es adecuado y después si se observan el disco óptico y la mácula, en una o dos oraciones.
+
+  "CAT_CALIDAD_IMAGEN:4":
+    pregunta_original: "¿La imagen está bien iluminada?"
+    prompt_enriquecido: |
+      Responde la siguiente pregunta sobre la imagen: ¿La imagen está bien iluminada?
+
+      Qué observar:
+      - Evalúa si el brillo general permite diferenciar los vasos y las estructuras de la retina sin perder detalles.
+      - Busca regiones demasiado oscuras o demasiado brillantes, incluidos indicios de saturación.
+      - Revisa si la iluminación cambia marcadamente entre el centro y la periferia.
+      - No confundas falta de iluminación con desenfoque, con bajo contraste por otra causa ni con pigmentación fisiológica.
+
+      Ejemplos hipotéticos, solo de texto (no representan la imagen actual):
+      - Ejemplo A. Observación hipotética: se ven detalles en todo el campo, con luminosidad suficiente y pareja. Respuesta: "Sí, la imagen está bien iluminada."
+      - Ejemplo B. Observación hipotética: una parte extensa del campo es demasiado oscura para distinguir detalles. Respuesta: "No, la imagen presenta falta de iluminación."
+      - Ejemplo C. Observación hipotética: una región extensa es tan brillante que se pierden sus detalles. Respuesta: "No, la imagen presenta exceso de iluminación."
+
+      Instrucciones generales: Trabaja exclusivamente con la retinografía color adjunta. Los ejemplos son hipotéticos: no describen la imagen actual, no deben tomarse como evidencia ni copiarse. No inventes observaciones. Responde en español, sin información clínica externa.
+
+      Formato de salida: Empieza por "Sí" o "No"; si detectas un defecto, indica si predomina la oscuridad, el exceso de brillo o la iluminación desigual, y en qué zona. Una o dos oraciones.
+
+  "CAT_CALIDAD_IMAGEN:5":
+    pregunta_original: "¿La imagen es suficientemente nítida? ¿Tiene buen contraste?"
+    prompt_enriquecido: |
+      Responde la siguiente pregunta sobre la imagen: ¿La imagen es suficientemente nítida? ¿Tiene buen contraste?
+
+      Qué observar:
+      - Examina si los bordes de los vasos, del disco óptico y de las demás estructuras visibles son definidos o se ven difusos.
+      - Evalúa el contraste entre los vasos y la retina que los rodea, y entre las áreas claras y oscuras del campo.
+      - Distingue la nitidez (definición de los contornos) del contraste (diferenciación de tonos): uno puede ser adecuado y el otro no.
+      - Considera si los defectos impiden reconocer características necesarias para la inspección.
+
+      Ejemplos hipotéticos, solo de texto (no representan la imagen actual):
+      - Ejemplo A. Observación hipotética: los bordes de los vasos se distinguen y las variaciones de tono son diferenciables. Respuesta: "Sí, la imagen es nítida y tiene buen contraste."
+      - Ejemplo B. Observación hipotética: los bordes de los vasos se ven difusos, aunque todavía se separan las zonas claras y oscuras. Respuesta: "No, la imagen está desenfocada, aunque el contraste se conserva."
+
+      Instrucciones generales: Trabaja exclusivamente con la retinografía color adjunta. Los ejemplos son hipotéticos: no describen la imagen actual, no deben tomarse como evidencia ni copiarse. No inventes observaciones. Responde en español, sin información clínica externa.
+
+      Formato de salida: Indica por separado si la nitidez es suficiente y si el contraste es adecuado, en una o dos oraciones.
+
+  "CAT_CALIDAD_IMAGEN:6":
+    pregunta_original: "¿Existen artefactos en la imagen?"
+    prompt_enriquecido: |
+      Responde la siguiente pregunta sobre la imagen: ¿Existen artefactos en la imagen?
+
+      Qué observar:
+      - Busca elementos ajenos a la retina, como reflejos, sombras superpuestas, bordes de captura o manchas de origen óptico.
+      - Distingue esos elementos de los vasos, el disco óptico, las lesiones o los cambios pigmentarios propios de la retina.
+      - Evalúa su extensión y si tapan estructuras o dificultan la interpretación.
+      - No atribuyas una causa exacta al artefacto si no puede reconocerse visualmente.
+
+      Ejemplos hipotéticos, solo de texto (no representan la imagen actual):
+      - Ejemplo A. Observación hipotética: aparece una forma luminosa superpuesta que no sigue la anatomía del fondo de ojo. Respuesta: "Sí, se observa un artefacto de captura superpuesto a la retina."
+      - Ejemplo B. Observación hipotética: las variaciones visibles siguen las estructuras del fondo de ojo y no hay superposiciones extrañas. Respuesta: "No se observan artefactos."
+
+      Instrucciones generales: Trabaja exclusivamente con la retinografía color adjunta. Los ejemplos son hipotéticos: no describen la imagen actual, no deben tomarse como evidencia ni copiarse. No inventes observaciones. Responde en español, sin información clínica externa.
+
+      Formato de salida: Empieza por "Sí" o "No"; si es "Sí", describe brevemente el tipo aparente de artefacto, su ubicación y su efecto sobre la visibilidad. Una o dos oraciones.
+
+  "CAT_CALIDAD_IMAGEN:7":
+    pregunta_original: "¿Se observan correctamente en la imagen las principales estructuras anatómicas de la retina (arcadas vasculares, mácula, disco óptico)?"
+    prompt_enriquecido: |
+      Responde la siguiente pregunta sobre la imagen: ¿Se observan correctamente en la imagen las principales estructuras anatómicas de la retina (arcadas vasculares, mácula, disco óptico)?
+
+      Qué observar:
+      - Comprueba por separado la visibilidad del disco óptico, la región macular y las arcadas vasculares principales.
+      - Distingue una estructura que queda fuera del campo de una que está presente pero se ve mal por la iluminación, el enfoque o un artefacto.
+      - Evalúa si cada estructura se reconoce lo suficiente para una inspección básica, sin exigir perfección óptica.
+      - Si solo se distinguen algunas estructuras, indica cuáles se observan y cuáles no.
+
+      Ejemplos hipotéticos, solo de texto (no representan la imagen actual):
+      - Ejemplo A. Observación hipotética: se identifican las tres estructuras con suficiente claridad. Respuesta: "Sí, se observan correctamente las arcadas vasculares, la mácula y el disco óptico."
+      - Ejemplo B. Observación hipotética: una de las estructuras está oculta o fuera del campo, mientras las otras se reconocen. Respuesta: "Parcialmente: se observan dos de las estructuras, pero una no puede evaluarse."
+
+      Instrucciones generales: Trabaja exclusivamente con la retinografía color adjunta. Los ejemplos son hipotéticos: no describen la imagen actual, no deben tomarse como evidencia ni copiarse. No inventes observaciones. Responde en español, sin información clínica externa.
+
+      Formato de salida: Empieza por "Sí", "Parcialmente" o "No" y menciona qué se observa de las arcadas vasculares, la mácula y el disco óptico, en una o dos oraciones.
+
+  "CAT_CALIDAD_IMAGEN:8":
+    pregunta_original: "¿Se observa algún factor anatómico que limita la calidad de la imagen?"
+    prompt_enriquecido: |
+      Responde la siguiente pregunta sobre la imagen: ¿Se observa algún factor anatómico que limita la calidad de la imagen?
+
+      Qué observar:
+      - Busca características visibles del fondo de ojo o de los medios ópticos que expliquen una limitación de la imagen.
+      - Diferencia los factores anatómicos u oculares de las fallas técnicas de exposición, enfoque o centrado.
+      - Si observas rasgos compatibles con alteraciones miópicas, opacidad de medios u otro factor ocular, nómbralo como posible causa.
+      - No lo afirmes solo porque la imagen esté borrosa u oscura: presenta la causa como posible, no como diagnóstico confirmado.
+
+      Ejemplos hipotéticos, solo de texto (no representan la imagen actual):
+      - Ejemplo A. Observación hipotética: se aprecia una característica ocular visible que interfiere con la inspección de una parte del campo. Respuesta: "Sí, se observan signos compatibles con un factor ocular que limita la calidad de la imagen."
+      - Ejemplo B. Observación hipotética: las estructuras se ven sin signos de una barrera ocular específica. Respuesta: "No se observa un factor anatómico que limite la calidad de la imagen."
+
+      Instrucciones generales: Trabaja exclusivamente con la retinografía color adjunta. Los ejemplos son hipotéticos: no describen la imagen actual, no deben tomarse como evidencia ni copiarse. No inventes observaciones. Responde en español, sin información clínica externa.
+
+      Formato de salida: Empieza por "Sí" o "No"; si es "Sí", describe el signo visible y su posible causa, en una o dos oraciones.
+
+  "CAT_RETINOPATIA_DIABETICA:1":
+    pregunta_original: "¿Se observan microaneurismas o microhemorragias? ¿Dónde se localizan?"
+    prompt_enriquecido: |
+      Responde la siguiente pregunta sobre la imagen: ¿Se observan microaneurismas o microhemorragias? ¿Dónde se localizan?
+
+      Qué observar:
+      - Revisa todo el fondo de ojo buscando pequeños puntos rojos o lesiones redondeadas discretas que puedan corresponder a microaneurismas o microhemorragias.
+      - Diferencia esos puntos de vasos finos, cruces vasculares, pigmentación y artefactos.
+      - Si hay lesiones compatibles, estima si son aisladas o múltiples y ubica las regiones donde las ves.
+      - Si no puedes distinguir entre microaneurisma y microhemorragia, usa "compatible con".
+
+      Ejemplos hipotéticos, solo de texto (no representan la imagen actual):
+      - Ejemplo A. Observación hipotética: se distinguen pequeños puntos rojos, separados de los vasos, cerca de la arcada temporal inferior. Respuesta: "Sí, se observan lesiones puntiformes compatibles con microaneurismas o microhemorragias en la arcada temporal inferior."
+      - Ejemplo B. Observación hipotética: no se distinguen puntos rojos anómalos en las zonas visibles. Respuesta: "No se observan microaneurismas ni microhemorragias."
+
+      Instrucciones generales: Trabaja exclusivamente con la retinografía color adjunta. Los ejemplos son hipotéticos: no describen la imagen actual, no deben tomarse como evidencia ni copiarse. No inventes observaciones. Si la calidad de la imagen limita la evaluación, menciónalo, pero responde igualmente la pregunta. Responde en español, sin información clínica externa.
+
+      Formato de salida: Empieza por "Sí" o "No". Si es "Sí", indica dónde se localizan usando referencias visibles (mácula, área perimacular, arcada temporal superior o inferior, nasal al disco óptico, periferia). Una o dos oraciones.
+
+  "CAT_RETINOPATIA_DIABETICA:2":
+    pregunta_original: "¿Hay hemorragias intrarretinianas, incluidas microhemorragias? ¿Dónde se localizan?"
+    prompt_enriquecido: |
+      Responde la siguiente pregunta sobre la imagen: ¿Hay hemorragias intrarretinianas, incluidas microhemorragias? ¿Dónde se localizan?
+
+      Qué observar:
+      - Busca lesiones rojas compatibles con sangrado en la retina, incluidas las manchas pequeñas y las hemorragias puntiformes, redondeadas o en llama.
+      - Examina si su forma y su relación con los vasos son compatibles con hemorragias y no con vasos normales o artefactos.
+      - Si hay lesiones, ubica las regiones donde las ves.
+      - No consideres hemorragia cualquier mancha roja.
+
+      Ejemplos hipotéticos, solo de texto (no representan la imagen actual):
+      - Ejemplo A. Observación hipotética: se reconocen manchas rojas con un patrón distinto del dibujo vascular, en el área perimacular. Respuesta: "Sí, se observan hemorragias intrarretinianas en el área perimacular."
+      - Ejemplo B. Observación hipotética: no se aprecian manchas rojas independientes de los vasos en las zonas visibles. Respuesta: "No se observan hemorragias intrarretinianas."
+
+      Instrucciones generales: Trabaja exclusivamente con la retinografía color adjunta. Los ejemplos son hipotéticos: no describen la imagen actual, no deben tomarse como evidencia ni copiarse. No inventes observaciones. Si la calidad de la imagen limita la evaluación, menciónalo, pero responde igualmente la pregunta. Responde en español, sin información clínica externa.
+
+      Formato de salida: Empieza por "Sí" o "No". Si es "Sí", indica dónde se localizan usando referencias visibles (mácula, área perimacular, arcada temporal superior o inferior, nasal al disco óptico, periferia). Una o dos oraciones.
+
+  "CAT_RETINOPATIA_DIABETICA:3":
+    pregunta_original: "¿Existen exudados duros blanquecinos? ¿Dónde se localizan?"
+    prompt_enriquecido: |
+      Responde la siguiente pregunta sobre la imagen: ¿Existen exudados duros blanquecinos? ¿Dónde se localizan?
+
+      Qué observar:
+      - Busca depósitos o puntos blanco-amarillentos, de bordes relativamente definidos, compatibles con exudados duros.
+      - Considera si aparecen aislados o agrupados y si forman patrones reconocibles.
+      - Distínguelos de reflejos, del brillo del disco óptico, de alteraciones pigmentarias y de otras lesiones claras.
+      - Si hay lesiones, ubica las regiones donde las ves.
+
+      Ejemplos hipotéticos, solo de texto (no representan la imagen actual):
+      - Ejemplo A. Observación hipotética: se ven pequeños depósitos claros y bien delimitados, distintos de los reflejos, temporales a la mácula. Respuesta: "Sí, se observan exudados duros temporales a la mácula."
+      - Ejemplo B. Observación hipotética: no se reconocen depósitos claros definidos, distintos de las estructuras normales. Respuesta: "No se observan exudados duros."
+
+      Instrucciones generales: Trabaja exclusivamente con la retinografía color adjunta. Los ejemplos son hipotéticos: no describen la imagen actual, no deben tomarse como evidencia ni copiarse. No inventes observaciones. Si la calidad de la imagen limita la evaluación, menciónalo, pero responde igualmente la pregunta. Responde en español, sin información clínica externa.
+
+      Formato de salida: Empieza por "Sí" o "No". Si es "Sí", indica dónde se localizan usando referencias visibles (mácula, área perimacular, arcada temporal superior o inferior, nasal al disco óptico, periferia). Una o dos oraciones.
+
+  "CAT_RETINOPATIA_DIABETICA:4":
+    pregunta_original: "¿Hay presencia de exudados blandos o algodonosos? ¿Dónde se localizan?"
+    prompt_enriquecido: |
+      Responde la siguiente pregunta sobre la imagen: ¿Hay presencia de exudados blandos o algodonosos? ¿Dónde se localizan?
+
+      Qué observar:
+      - Busca áreas blanquecinas pálidas, de aspecto algodonoso y bordes poco definidos.
+      - Diferéncialas de los depósitos claros de bordes nítidos, de los reflejos de la iluminación y de otras zonas muy luminosas.
+      - Observa si hay focos únicos o múltiples y su relación con los vasos.
+      - Si hay lesiones, ubica las regiones donde las ves; si los bordes no permiten distinguirlas de otras causas, usa "compatible con".
+
+      Ejemplos hipotéticos, solo de texto (no representan la imagen actual):
+      - Ejemplo A. Observación hipotética: se distingue una lesión blanquecina de bordes difusos, distinta de un reflejo, junto a la arcada temporal superior. Respuesta: "Sí, se observa un exudado algodonoso en la arcada temporal superior."
+      - Ejemplo B. Observación hipotética: no se reconocen manchas blanquecinas difusas fuera de las estructuras normales. Respuesta: "No se observan exudados blandos o algodonosos."
+
+      Instrucciones generales: Trabaja exclusivamente con la retinografía color adjunta. Los ejemplos son hipotéticos: no describen la imagen actual, no deben tomarse como evidencia ni copiarse. No inventes observaciones. Si la calidad de la imagen limita la evaluación, menciónalo, pero responde igualmente la pregunta. Responde en español, sin información clínica externa.
+
+      Formato de salida: Empieza por "Sí" o "No". Si es "Sí", indica dónde se localizan usando referencias visibles (mácula, área perimacular, arcada temporal superior o inferior, nasal al disco óptico, periferia). Una o dos oraciones.
+
+  "CAT_RETINOPATIA_DIABETICA:5":
+    pregunta_original: "¿Se observan alteraciones venosas como arrosariamiento o tortuosidad?"
+    prompt_enriquecido: |
+      Responde la siguiente pregunta sobre la imagen: ¿Se observan alteraciones venosas como arrosariamiento o tortuosidad?
+
+      Qué observar:
+      - Sigue el trayecto de las venas visibles y evalúa si presentan cambios notorios de calibre, irregularidades por segmentos o dilataciones sucesivas.
+      - Examina si hay tortuosidad marcada y diferénciala de las curvas vasculares habituales.
+      - Diferencia arterias y venas cuando el aspecto lo permita; no consideres alteración venosa cualquier vaso curvo.
+
+      Ejemplos hipotéticos, solo de texto (no representan la imagen actual):
+      - Ejemplo A. Observación hipotética: una vena presenta estrechamientos y dilataciones alternados. Respuesta: "Sí, se observa arrosariamiento venoso."
+      - Ejemplo B. Observación hipotética: los vasos siguen curvas suaves, sin irregularidades de calibre. Respuesta: "No se observan alteraciones venosas."
+
+      Instrucciones generales: Trabaja exclusivamente con la retinografía color adjunta. Los ejemplos son hipotéticos: no describen la imagen actual, no deben tomarse como evidencia ni copiarse. No inventes observaciones. Si la calidad de la imagen limita la evaluación, menciónalo, pero responde igualmente la pregunta. Responde en español, sin información clínica externa.
+
+      Formato de salida: Empieza por "Sí" o "No"; si es "Sí", indica si predomina el arrosariamiento, la tortuosidad u otra alteración, y dónde se ve. Una o dos oraciones.
+
+  "CAT_RETINOPATIA_DIABETICA:6":
+    pregunta_original: "¿Existen anomalías microvasculares intrarretinianas (IRMA)?"
+    prompt_enriquecido: |
+      Responde la siguiente pregunta sobre la imagen: ¿Existen anomalías microvasculares intrarretinianas (IRMA)?
+
+      Qué observar:
+      - Busca vasos finos e irregulares dentro de la retina, con ramificaciones o conexiones anómalas respecto del patrón vascular habitual.
+      - Evalúa si esos trazados se distinguen claramente de las ramificaciones normales, los cruces vasculares o los artefactos.
+      - Diferencia una posible IRMA de una neovascularización, sabiendo que una retinografía color puede no permitir distinguirlas con seguridad.
+      - No afirmes IRMA si solo ves vasos tortuosos.
+
+      Ejemplos hipotéticos, solo de texto (no representan la imagen actual):
+      - Ejemplo A. Observación hipotética: aparece una red vascular pequeña e irregular que no coincide con las ramificaciones habituales. Respuesta: "Sí, se observa una alteración compatible con IRMA."
+      - Ejemplo B. Observación hipotética: los vasos siguen el patrón esperado y no se destaca ninguna red irregular. Respuesta: "No se observan IRMA."
+
+      Instrucciones generales: Trabaja exclusivamente con la retinografía color adjunta. Los ejemplos son hipotéticos: no describen la imagen actual, no deben tomarse como evidencia ni copiarse. No inventes observaciones. Si la calidad de la imagen limita la evaluación, menciónalo, pero responde igualmente la pregunta. Responde en español, sin información clínica externa.
+
+      Formato de salida: Empieza por "Sí" o "No"; si es "Sí", indica qué rasgo lo motiva y dónde se ve. Una o dos oraciones.
+
+  "CAT_RETINOPATIA_DIABETICA:7":
+    pregunta_original: "¿Hay signos de neovascularización o tejido fibrovascular?"
+    prompt_enriquecido: |
+      Responde la siguiente pregunta sobre la imagen: ¿Hay signos de neovascularización o tejido fibrovascular?
+
+      Qué observar:
+      - Revisa el disco óptico y la retina visible buscando redes de vasos finos nuevos, ramificaciones desorganizadas o proliferaciones de aspecto anómalo.
+      - Busca también estructuras membranosas o blanquecinas compatibles con tejido fibroso asociado.
+      - Diferencia estos signos de las ramificaciones vasculares normales, los reflejos, los exudados y las cicatrices de otro origen.
+      - Si la fotografía no permite confirmarlo, usa "compatible con".
+
+      Ejemplos hipotéticos, solo de texto (no representan la imagen actual):
+      - Ejemplo A. Observación hipotética: se reconoce una proliferación de vasos finos y desordenados, distinta de los trayectos normales. Respuesta: "Sí, se observan signos compatibles con neovascularización."
+      - Ejemplo B. Observación hipotética: solo se ven vasos con su ramificación habitual, sin proliferaciones. Respuesta: "No se observan signos de neovascularización ni tejido fibrovascular."
+
+      Instrucciones generales: Trabaja exclusivamente con la retinografía color adjunta. Los ejemplos son hipotéticos: no describen la imagen actual, no deben tomarse como evidencia ni copiarse. No inventes observaciones. Si la calidad de la imagen limita la evaluación, menciónalo, pero responde igualmente la pregunta. Responde en español, sin información clínica externa.
+
+      Formato de salida: Empieza por "Sí" o "No"; si es "Sí", indica si se ven vasos nuevos, tejido fibroso o ambos, y dónde (sobre el disco óptico o fuera de él). Una o dos oraciones.
+
+  "CAT_RETINOPATIA_DIABETICA:8":
+    pregunta_original: "¿Se evidencian signos de tratamientos oftalmológicos previos?"
+    prompt_enriquecido: |
+      Responde la siguiente pregunta sobre la imagen: ¿Se evidencian signos de tratamientos oftalmológicos previos?
+
+      Qué observar:
+      - Busca huellas visibles de tratamientos en la retina, especialmente pequeñas cicatrices o marcas repetidas de fotocoagulación láser.
+      - Examina si su patrón y distribución corresponden a aplicaciones focales o más extendidas.
+      - Distínguelas de cambios pigmentarios espontáneos, atrofias, reflejos y otras lesiones que pueden parecer cicatrices.
+      - No infieras tratamientos que no dejan marcas visibles en una retinografía color, como inyecciones o cirugías.
+
+      Ejemplos hipotéticos, solo de texto (no representan la imagen actual):
+      - Ejemplo A. Observación hipotética: aparecen en la retina varias marcas pequeñas y repetidas, compatibles con aplicaciones de láser. Respuesta: "Sí, se observan cicatrices compatibles con fotocoagulación láser previa."
+      - Ejemplo B. Observación hipotética: no se reconocen patrones de cicatrices de tratamiento en las zonas visibles. Respuesta: "No se observan signos de tratamientos previos."
+
+      Instrucciones generales: Trabaja exclusivamente con la retinografía color adjunta. Los ejemplos son hipotéticos: no describen la imagen actual, no deben tomarse como evidencia ni copiarse. No inventes observaciones. Si la calidad de la imagen limita la evaluación, menciónalo, pero responde igualmente la pregunta. Responde en español, sin información clínica externa.
+
+      Formato de salida: Empieza por "Sí" o "No"; si es "Sí", describe el tipo de marca y dónde se ve. Una o dos oraciones.
